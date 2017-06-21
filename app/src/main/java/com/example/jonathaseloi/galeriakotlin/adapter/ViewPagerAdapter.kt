@@ -22,11 +22,11 @@ class ViewPagerAdapter(private val context: Context, manager: FragmentManager) :
     @UiThread
     override fun getItem(position: Int): Fragment? {
         when (position) {
-            GALERIA_IMAGENS -> return GaleriaFragment.newInstance("Imagens", arrayOf("%/AppGallery/Imagens%"),
+            GALERIA_IMAGENS -> return GaleriaFragment.newInstance("Imagens", arrayOf("%/AppGallery/Imagens/%"),
                     R.layout.fragment_galeria_viewpager_imagens, R.id.recycler_view_imagens)
-            GALERIA_VIDEOS -> return GaleriaFragment.newInstance("Videos", arrayOf("%/AppGallery/Videos%"),
+            GALERIA_VIDEOS -> return GaleriaFragment.newInstance("Videos", arrayOf("%/AppGallery/Videos/%"),
                     R.layout.fragment_galeria_viewpager_videos, R.id.recycler_view_videos)
-            GALERIA_OUTROS -> return GaleriaFragment.newInstance("Outros", arrayOf("%/AppGallery/Outros%"),
+            GALERIA_OUTROS -> return GaleriaFragment.newInstance("Outros", arrayOf("%/AppGallery/Outros/%"),
                     R.layout.fragment_galeria_viewpager_outros, R.id.recycler_view_outros)
         }
         return null
