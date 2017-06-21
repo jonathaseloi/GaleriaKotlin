@@ -1,11 +1,8 @@
-package com.example.jonathaseloi.galeriakotlin
+package com.example.jonathaseloi.galeriakotlin.fragment
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.Context
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -16,14 +13,15 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.jonathaseloi.galeriakotlin.adapter.ImagensAdapter
+import com.example.jonathaseloi.galeriakotlin.adapter.OutrosAdapter
+import com.example.jonathaseloi.galeriakotlin.adapter.VideosAdapter
 
 import java.io.File
-import java.security.Permissions
 
 class GaleriaFragment : Fragment() {
 
@@ -63,16 +61,12 @@ class GaleriaFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(layout, container, false)
 
-        //ButterKnife.bind(this, rootView);
-        //recyclerView = ButterKnife.findById(rootView, recycleview);
         recyclerView = rootView?.findViewById(recycleview) as RecyclerView?
         return rootView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //((GaleriaActivity) getActivity()).activityComponent().inject(this);
-        //recyclerView = (RecyclerView) getActivity().findViewById(recycleview);
 
         val mNoOfColumns = calculateNoOfColumns(activity)
         val mLayoutManager = GridLayoutManager(activity, mNoOfColumns)
@@ -82,7 +76,6 @@ class GaleriaFragment : Fragment() {
 
         when (type) {
             "Imagens" -> {
-                //imagensAdapter = new ImagensAdapter();
                 recyclerView?.adapter = imagensAdapter
 
                 if (!permissaoAcessoArquivo(activity)) {
@@ -91,11 +84,9 @@ class GaleriaFragment : Fragment() {
             }
 
             "Videos" ->
-                //videosAdapter = new VideosAdapter();
                 recyclerView?.adapter = videosAdapter
 
             else ->
-                //outrosAdapter = new OutrosAdapter();
                 recyclerView?.adapter = outrosAdapter
         }
 
@@ -165,11 +156,8 @@ class GaleriaFragment : Fragment() {
                 val cr = activity.contentResolver
                 val uri = MediaStore.Files.getContentUri("external")
 
-                //projection = null;
-
                 val selection = MediaStore.Files.FileColumns.MEDIA_TYPE + "=" + MediaStore.Files.FileColumns.MEDIA_TYPE_NONE.toString() + " AND " + MediaStore.Files.FileColumns.DATA + " like ? "
 
-                //String sortOrder = null;
                 val allNonMediaFiles = cr.query(uri, null, selection, path, null)
 
                 if (allNonMediaFiles != null) {

@@ -3,13 +3,11 @@ package com.example.jonathaseloi.galeriakotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import com.example.jonathaseloi.galeriakotlin.adapter.ViewPagerAdapter
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
-
-    //val tabLayout = findViewById(R.id.tabs_galeria) as TabLayout
+class GaleriaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar_galeria)
 
         setupViewPager()
-
     }
 
     private fun setupViewPager() {

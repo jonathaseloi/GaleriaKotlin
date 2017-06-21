@@ -1,8 +1,7 @@
-package com.example.jonathaseloi.galeriakotlin
+package com.example.jonathaseloi.galeriakotlin.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.widget.RecyclerView
@@ -10,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.example.jonathaseloi.galeriakotlin.R
 
 import java.io.File
 import java.util.ArrayList
@@ -38,8 +38,7 @@ class ImagensAdapter : RecyclerView.Adapter<ImagensAdapter.MyViewHolder>() {
         notifyItemInserted(itemCount)
     }
 
-    inner class MyViewHolder(//public ImageView image;
-            val context: Context, view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class MyViewHolder(val context: Context, view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         var image: ImageView
 
@@ -69,7 +68,6 @@ class ImagensAdapter : RecyclerView.Adapter<ImagensAdapter.MyViewHolder>() {
         val myBitmap = BitmapFactory.decodeFile(imagepath)
         holder.image.setImageBitmap(myBitmap)
 
-        //Picasso.with(holder.image.getContext()).load(new File(imagepath)).resize(120, 120).centerCrop().into(holder.image);
     }
 
     override fun getItemCount(): Int {

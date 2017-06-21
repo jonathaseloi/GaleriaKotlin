@@ -1,10 +1,12 @@
-package com.example.jonathaseloi.galeriakotlin
+package com.example.jonathaseloi.galeriakotlin.adapter
 
 import android.content.Context
 import android.support.annotation.UiThread
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.example.jonathaseloi.galeriakotlin.R
+import com.example.jonathaseloi.galeriakotlin.fragment.GaleriaFragment
 
 class ViewPagerAdapter(private val context: Context, manager: FragmentManager) : FragmentPagerAdapter(manager) {
 
