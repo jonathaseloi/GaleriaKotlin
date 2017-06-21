@@ -2,6 +2,7 @@ package com.example.jonathaseloi.galeriakotlin.fragment
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.jonathaseloi.galeriakotlin.GaleriaActivity
 import com.example.jonathaseloi.galeriakotlin.adapter.ImagensAdapter
 import com.example.jonathaseloi.galeriakotlin.adapter.OutrosAdapter
 import com.example.jonathaseloi.galeriakotlin.adapter.VideosAdapter
@@ -28,9 +30,13 @@ class GaleriaFragment : Fragment() {
     internal var rootView: View? = null
 
     internal var recyclerView: RecyclerView? = null
+
     internal var type: String = ""
+
     internal var path: Array<String>? = null
+
     internal var layout: Int = 0
+
     internal var recycleview: Int = 0
 
     internal var imagensAdapter = ImagensAdapter()
@@ -97,7 +103,6 @@ class GaleriaFragment : Fragment() {
             createDirIfNotExists("AppGallery/Videos")
             searchfilestype(path, type, imagensAdapter, videosAdapter, outrosAdapter)
         }
-
     }
 
     override fun onResume() {
@@ -194,7 +199,6 @@ class GaleriaFragment : Fragment() {
 
             return fragment
         }
-
     }
 
     //Criar diretorios se nao existirem, ou se foram deletados

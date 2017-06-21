@@ -28,13 +28,13 @@ class ImagensAdapter : RecyclerView.Adapter<ImagensAdapter.MyViewHolder>() {
 
     fun addImagens(imagespath: List<String>) {
         for (path in imagespath) {
-            this.imagespath!!.add(path)
+            this.imagespath?.add(path)
             notifyItemInserted(itemCount)
         }
     }
 
     fun addImagem(path: String) {
-        this.imagespath!!.add(path)
+        this.imagespath?.add(path)
         notifyItemInserted(itemCount)
     }
 
@@ -52,7 +52,7 @@ class ImagensAdapter : RecyclerView.Adapter<ImagensAdapter.MyViewHolder>() {
         override fun onClick(v: View) {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
-            intent.setDataAndType(Uri.fromFile(File(imagespath!![adapterPosition])), "image/*")
+            intent.setDataAndType(Uri.fromFile(File(imagespath?.get(adapterPosition))), "image/*")
             context.startActivity(intent)
         }
     }
@@ -64,18 +64,18 @@ class ImagensAdapter : RecyclerView.Adapter<ImagensAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val imagepath = imagespath!![position]
+        val imagepath = imagespath?.get(position)
         val myBitmap = BitmapFactory.decodeFile(imagepath)
         holder.image.setImageBitmap(myBitmap)
 
     }
 
     override fun getItemCount(): Int {
-        return imagespath!!.size
+        return imagespath?.size as Int
     }
 
     fun clear() {
-        imagespath!!.clear()
+        imagespath?.clear()
         notifyDataSetChanged()
     }
 }

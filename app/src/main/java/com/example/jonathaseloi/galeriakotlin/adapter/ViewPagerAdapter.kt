@@ -41,5 +41,4 @@ class ViewPagerAdapter(private val context: Context, manager: FragmentManager) :
         return titles[position]
     }
 
-
 }
